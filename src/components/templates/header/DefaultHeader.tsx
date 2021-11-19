@@ -1,52 +1,62 @@
 import React from "react";
 import styled from "styled-components";
+import Close from "../../UI/svg/Close";
+import Crat from "../../UI/svg/Crat";
+import Hambuger from "../../UI/svg/Hambuger";
 import Logo from "../../UI/svg/Logo";
+import Menus from "../../UI/svg/Menus";
+import theme from "../../../styles/theme";
 
-const DefaultHeaderBlock = styled.div``;
+/* 
+미디어쿼리
+@media ${(props) => props.theme.media.desktop} {
+}; 
+*/
+
+/* desktop */
+const DefaultHeaderBlock = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+`;
 const InnerContainer = styled.div`
-  width: 1440px;
+  width: 1140px;
   margin: 0 auto;
+
+  @media ${(props) => props.theme.media.desktop} {
+    display: flex;
+  } ;
 `;
-const LogaArea = styled.div`
-  width: 97px;
-  height: 15.55px;
-`;
-const Nav = styled.div`
-  ul {
-    li {
-      & + li {
-        margin-left: 40px;
-      }
-    }
+const LogoArea = styled.div`
+  height: 60px;
+  display: flex;
+  align-items: center;
+  h1 {
+    width: 94px;
+    height: 16px;
+    display: flex;
+    align-items: center;
   }
 `;
 
-const DefaultHeader = () => {
+interface DefaultHeaderProps {
+  mobileMenuOpen: boolean;
+  toggleMobileMenuOpen: () => void;
+}
+const DefaultHeader = ({
+  mobileMenuOpen,
+  toggleMobileMenuOpen,
+}: DefaultHeaderProps) => {
   return (
     <DefaultHeaderBlock>
       <InnerContainer>
-        <LogaArea>
-          <Logo />
-        </LogaArea>
-        <Nav>
-          <ul>
-            <li>
-              <a href="">구독하기</a>
-            </li>
-            <li>
-              <a href="">상품보기</a>
-            </li>
-            <li>
-              <a href="">와이즐리 이야기</a>
-            </li>
-            <li>
-              <a href="">고객센터</a>
-            </li>
-          </ul>
-        </Nav>
+        <LogoArea>
+          <h1>
+            <Logo></Logo>
+          </h1>
+        </LogoArea>
       </InnerContainer>
     </DefaultHeaderBlock>
   );
 };
-
 export default DefaultHeader;

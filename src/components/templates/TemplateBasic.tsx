@@ -1,5 +1,6 @@
-import React, { ReactNode } from "react";
+import React, { ReactChild, ReactNode, useState } from "react";
 import styled from "styled-components";
+import DefatultArticle from "./article/DefatultArticle";
 import DefaultFooter from "./footer/DefaultFooter";
 import DefaultHeader from "./header/DefaultHeader";
 /* type */
@@ -12,19 +13,26 @@ interface TemplateBasicProps {
 /* style */
 
 const TemplateBasicBlock = styled.div`
-  div {
-    ${({ theme }) => theme.media.desktop`
-    background: red;
-  `}
+  .templateArticle {
+    margin-top: 60px;
+    height: 100vh;
   }
 `;
 
 /* JSX */
-const TemplateBasic = () => {
+const TemplateBasic = ({ children }: { children: ReactChild }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const toggleMobileMenuOpen = () => {
+    console.log(mobileMenuOpen);
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
   return (
     <TemplateBasicBlock>
-      <DefaultHeader></DefaultHeader>
-      <article></article>
+      <DefaultHeader
+        mobileMenuOpen={mobileMenuOpen}
+        toggleMobileMenuOpen={toggleMobileMenuOpen}
+      ></DefaultHeader>
+      <DefatultArticle children={children}></DefatultArticle>
       <DefaultFooter></DefaultFooter>
     </TemplateBasicBlock>
   );

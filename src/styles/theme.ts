@@ -1,12 +1,19 @@
-import media from "./media";
 const color = {
   white: "white",
   black: "black",
 };
+const size = {
+  desktop: "768px",
+};
 
-export const theme = {
+const theme = {
   color,
-  media,
+  media: {
+    mobile: `(max-width: ${size.desktop})`,
+    desktop: `(min-width: ${size.desktop})`,
+  },
 };
 
 export type Theme = typeof theme;
+
+export default theme;

@@ -1,10 +1,12 @@
 import { CSSProp, css } from "styled-components";
 
 type MediaQueryProps = {
+  mobile: number;
   desktop: number;
 };
 
 const sizes: MediaQueryProps = {
+  mobile: 0,
   desktop: 768,
 };
 
