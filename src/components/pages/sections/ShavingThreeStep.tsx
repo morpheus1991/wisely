@@ -393,13 +393,10 @@ const ShavingthreeStep = () => {
         String((targetRect?.height as number) / (stepInfo.length + 1))
       );
       const index = Math.abs(parseInt(String(targetTop / sectionDivideValue)));
-      console.log("index", index);
 
       if (index < stepInfo.length && 0 > targetTop) {
         //인덱스보다 아이템 갯수가 작을때
         //화면에 들어오기시작한 순간부터
-        console.log("범위 해당됨");
-        console.log(items);
         items.forEach((item, i) => {
           if (i !== currentIndex) {
             item.classList.remove("on");
@@ -430,18 +427,12 @@ const ShavingthreeStep = () => {
                           {i == 0 && item.subTitle === null ? null : (
                             <button
                               onClick={() => {
-                                console.log(
-                                  document
-                                    .querySelector("#root")!
-                                    .getBoundingClientRect().height
-                                );
                                 const goto: number =
                                   (document
                                     .querySelector("#root")!
                                     .getBoundingClientRect().height as number) -
                                   sectionDivideValue * (self.length - i);
 
-                                console.log("goto", goto);
                                 window.scrollTo(0, goto);
                               }}
                               className="sub-title"

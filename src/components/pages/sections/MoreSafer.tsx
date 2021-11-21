@@ -210,7 +210,6 @@ const MoreSafer = () => {
     const innerWidth = window.innerWidth;
     if (768 < innerWidth) {
       if (innerWidth < 1140) {
-        console.log("innerWidth 768~ 1140");
         containerRef.current?.classList.add("pc-small-mode");
       }
     }
@@ -218,14 +217,10 @@ const MoreSafer = () => {
       containerRef.current?.classList.remove("pc-small-mode");
     }
     window.addEventListener("resize", () => {
-      console.log("resize동작");
-
       const innerWidth = window.innerWidth;
-      console.log("innerWidth :", innerWidth);
 
       if (768 < innerWidth) {
         if (innerWidth < 1140) {
-          console.log("innerWidth 768~ 1140");
           containerRef.current?.classList.add("pc-small-mode");
         }
       }
@@ -237,7 +232,6 @@ const MoreSafer = () => {
     const getElementsTopValue = (elements: Element[]) => {
       const res: number[] = [];
       elements.forEach((el) => {
-        console.log(el.getBoundingClientRect());
         const topValue = String(el.getBoundingClientRect().top);
         res.push(parseInt(topValue));
       });
