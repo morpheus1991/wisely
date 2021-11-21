@@ -138,7 +138,7 @@ const Block = styled.section`
             }
             .image-area {
               width: 100%;
-              text-align: centers;
+              text-align: center;
               img {
                 width: 300px;
                 height: 380px;

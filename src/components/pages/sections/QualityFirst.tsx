@@ -115,23 +115,26 @@ const QualityFirst = () => {
     const guideLine = window.innerHeight - window.scrollY - innerHeight / 2; //가상의 중앙선 높이
     let targetRectInfo = targetRef.current?.getBoundingClientRect() as DOMRect;
     let targetTopValue = targetRectInfo.top;
+    if (targetRef && targetRectInfo.top && targetTopValue) {
+      window.addEventListener("scroll", () => {
+        targetRectInfo = targetRef.current?.getBoundingClientRect() as DOMRect;
+        if (targetRectInfo) {
+          targetTopValue = targetRectInfo.top;
+        }
+        const targetHeight = targetRectInfo.height;
+        const calcProgress = (ratio: number) => {
+          const heightToreduce =
+            targetHeight - (guideLine - targetRectInfo.top) * ratio;
+          return heightToreduce;
+        };
 
-    window.addEventListener("scroll", () => {
-      targetRectInfo = targetRef.current?.getBoundingClientRect() as DOMRect;
-      targetTopValue = targetRectInfo.top;
-      const targetHeight = targetRectInfo.height;
-      const calcProgress = (ratio: number) => {
-        const heightToreduce =
-          targetHeight - (guideLine - targetRectInfo.top) * ratio;
-        return heightToreduce;
-      };
-
-      if (guideLine && targetTopValue) {
-        const heightToreduceValue = calcProgress(0.5);
-        targetRef!.current!.style.height = `${heightToreduceValue}px`;
-      }
-    });
-  }, [targetRef]);
+        if (guideLine && targetTopValue) {
+          const heightToreduceValue = calcProgress(0.5);
+          targetRef!.current!.style.height = `${heightToreduceValue}px`;
+        }
+      });
+    }
+  }, []);
   return (
     <Block className="section quality-first">
       <div className="image-area">
