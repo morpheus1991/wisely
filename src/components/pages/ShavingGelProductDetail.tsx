@@ -5,7 +5,6 @@ import TemplateBasic from "../templates/TemplateBasic";
 import MoreSafer from "./sections/MoreSafer";
 import QualityFirst from "./sections/QualityFirst";
 import ShavingThreeStep from "./sections/ShavingThreeStep";
-import Test from "./sections/Test";
 
 const ArticleBlock = styled.article`
   height: 100%;

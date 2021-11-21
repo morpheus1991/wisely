@@ -113,12 +113,12 @@ const QualityFirst = () => {
   useEffect(() => {
     const innerHeight = window.innerHeight; //브라우저 화면 높이
     const guideLine = window.innerHeight - window.scrollY - innerHeight / 2; //가상의 중앙선 높이
-    const targetRectInfo =
-      targetRef.current?.getBoundingClientRect() as DOMRect;
+    let targetRectInfo = targetRef.current?.getBoundingClientRect() as DOMRect;
+    let targetTopValue = targetRectInfo.top;
+
     window.addEventListener("scroll", () => {
-      const targetRectInfo =
-        targetRef.current?.getBoundingClientRect() as DOMRect;
-      const targetTopValue = targetRectInfo.top;
+      targetRectInfo = targetRef.current?.getBoundingClientRect() as DOMRect;
+      targetTopValue = targetRectInfo.top;
       const targetHeight = targetRectInfo.height;
       const calcProgress = (ratio: number) => {
         const heightToreduce =

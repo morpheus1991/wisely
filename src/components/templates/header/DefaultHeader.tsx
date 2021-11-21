@@ -1,17 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Close from "../../UI/svg/Close";
-import Crat from "../../UI/svg/Crat";
-import Hambuger from "../../UI/svg/Hambuger";
 import Logo from "../../UI/svg/Logo";
-import Menus from "../../UI/svg/Menus";
-import theme from "../../../styles/theme";
-
-/* 
-미디어쿼리
-@media ${(props) => props.theme.media.desktop} {
-}; 
-*/
 
 /* desktop */
 const DefaultHeaderBlock = styled.div`
@@ -51,7 +41,9 @@ const DefaultHeader = ({
       <InnerContainer>
         <LogoArea>
           <h1>
-            <Logo></Logo>
+            <Link to="/">
+              <Logo></Logo>
+            </Link>
           </h1>
         </LogoArea>
       </InnerContainer>

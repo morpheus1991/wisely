@@ -12,8 +12,8 @@ const SingleLeftAngleQuotation = ({ witdh = "100%", height = "100%" }) => {
       <path
         d="M1 1L5.66667 6.25L1 11.5"
         stroke="#0055B8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

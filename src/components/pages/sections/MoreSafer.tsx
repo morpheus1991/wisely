@@ -107,6 +107,7 @@ const Block = styled.section`
       width: 100%;
       > .fixed-text-area {
         > .inner {
+          text-align: center;
           span {
             ${fontSize.mobile.text.txt_mr12}
             &+h3 {
@@ -137,6 +138,7 @@ const Block = styled.section`
             }
             .image-area {
               width: 100%;
+              text-align: centers;
               img {
                 width: 300px;
                 height: 380px;

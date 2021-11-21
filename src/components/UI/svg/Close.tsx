@@ -15,16 +15,16 @@ const Close = ({ witdh = "100%", height = "100%" }) => {
           d="M7.33142 16.6728L16.6728 7.33142"
           stroke="#1C1C1C"
           stroke-miterlimit="10"
-          stroke-linecap="square"
-          stroke-linejoin="round"
+          strokeLinecap="square"
+          strokeLinejoin="round"
           vector-effect="non-scaling-stroke"
         ></path>
         <path
           d="M7.33142 7.33142L16.6728 16.6728"
           stroke="#1C1C1C"
           stroke-miterlimit="10"
-          stroke-linecap="square"
-          stroke-linejoin="round"
+          strokeLinecap="square"
+          strokeLinejoin="round"
           vector-effect="non-scaling-stroke"
         ></path>
       </g>

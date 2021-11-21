@@ -184,6 +184,8 @@ const Block = styled.section`
             visibility: visible;
           }
           .text-area-nav {
+            display: flex;
+            justify-content: center;
             .sub-title {
               margin: 0 12px !important;
             }
@@ -218,11 +220,22 @@ const Block = styled.section`
             padding-top: 110%; */
             .text-area-inner {
               margin-top: 40px;
+              padding: 0 14px;
               .text-area-nav {
                 display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding-top: 73%;
+                z-index: 100;
                 > span {
                   display: flex;
                   align-items: center;
+                  button {
+                    background: none;
+                  }
                 }
                 .sub-title {
                   padding: 8px 5px;
@@ -262,13 +275,6 @@ const Block = styled.section`
               }
 
               .text-area-nav {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                margin: auto;
-                padding-top: 73%;
-                z-index: 100;
                 > span {
                 }
                 & + .title {
@@ -414,7 +420,7 @@ const ShavingthreeStep = () => {
       <div className="slideArea" ref={targetRef}>
         <ul className="slide-list">
           {stepInfo.map((item, i) => (
-            <li className={i === 0 ? "first item" : "item"}>
+            <li key={i} className={i === 0 ? "first item" : "item"}>
               <div className="item-inner">
                 <div className="text-area">
                   <div className="text-area-inner">
