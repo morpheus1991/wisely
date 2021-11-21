@@ -79,7 +79,6 @@ const Block = styled.section`
       }
     }
     &.pc-small-mode {
-      background: pink;
       .inner-container {
         justify-content: center;
       }
@@ -191,13 +190,10 @@ const MoreSafer = () => {
     {
       textArea: (
         <dl className="text-area">
-          <dt>
-            잔량 확인도 쉽고,
-            <br /> 끝까지 다 나오는 내용물
-          </dt>
+          <dt>녹슬지 않는 특수 용기</dt>
           <dd>
-            투명한 측면 게이지로 잔량을
-            <br /> 눈으로 확인할 수 있습니다.
+            플라스틱으로 제작된 특수 용기, 습기 찬<br />
+            화장실에서 오래 사용해도 녹슬지 않아요.
           </dd>
         </dl>
       ),

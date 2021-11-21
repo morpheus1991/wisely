@@ -109,10 +109,12 @@ const Block = styled.section`
 
 const QualityFirst = () => {
   const targetRef = useRef<HTMLDivElement>(null); //타겟element
-  const innerHeight = window.innerHeight; //브라우저 화면 높이
-  const guideLine = window.innerHeight - window.scrollY - innerHeight / 2; //가상의 중앙선 높이
 
   useEffect(() => {
+    const innerHeight = window.innerHeight; //브라우저 화면 높이
+    const guideLine = window.innerHeight - window.scrollY - innerHeight / 2; //가상의 중앙선 높이
+    const targetRectInfo =
+      targetRef.current?.getBoundingClientRect() as DOMRect;
     window.addEventListener("scroll", () => {
       const targetRectInfo =
         targetRef.current?.getBoundingClientRect() as DOMRect;
@@ -129,7 +131,7 @@ const QualityFirst = () => {
         targetRef!.current!.style.height = `${heightToreduceValue}px`;
       }
     });
-  }, []);
+  }, [targetRef]);
   return (
     <Block className="section quality-first">
       <div className="image-area">

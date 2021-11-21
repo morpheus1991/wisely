@@ -182,12 +182,11 @@ const Block = styled.section`
             display: flex;
             opacity: 1;
             visibility: visible;
-    
-   
-        }               .text-area-nav {
-                      .sub-title {
-                    margin:0 12px !important;
-                  }
+          }
+          .text-area-nav {
+            .sub-title {
+              margin: 0 12px !important;
+            }
           }
           > .item-inner {
             display: flex;
@@ -209,7 +208,7 @@ const Block = styled.section`
               }
             }
           }
-        .text-area {
+          .text-area {
             width: 100%;
             order: 2;
             margin-bottom: auto;
@@ -261,7 +260,7 @@ const Block = styled.section`
                   }
                 }
               }
-          
+
               .text-area-nav {
                 position: absolute;
                 top: 0;
@@ -284,21 +283,23 @@ const Block = styled.section`
               }
             }
           }
-        .icon-area {
-                display: flex;
-                width: 10px;
-                align-items: center;
-              }
+          .icon-area {
+            display: flex;
+            width: 10px;
+            align-items: center;
+          }
+        }
       }
-    }
-    .emptyArea {
-      height: 100%;
-      .item {
+      .emptyArea {
         height: 100%;
+        .item {
+          height: 100%;
+        }
       }
     }
   }
 `;
+let sectionDivideValue: number;
 const ShavingthreeStep = () => {
   const [stepInfo, setStepInfo] = useState([
     {
@@ -382,7 +383,7 @@ const ShavingthreeStep = () => {
     window.addEventListener("scroll", () => {
       const targetTop = targetRef.current?.getBoundingClientRect()
         .top as number;
-      const sectionDivideValue = parseInt(
+      sectionDivideValue = parseInt(
         String((targetRect?.height as number) / (stepInfo.length + 1))
       );
       const index = Math.abs(parseInt(String(targetTop / sectionDivideValue)));
@@ -421,7 +422,26 @@ const ShavingthreeStep = () => {
                       {stepInfo.map((item, i, self) => (
                         <span>
                           {i == 0 && item.subTitle === null ? null : (
-                            <span className="sub-title">{item.subTitle}</span>
+                            <button
+                              onClick={() => {
+                                console.log(
+                                  document
+                                    .querySelector("#root")!
+                                    .getBoundingClientRect().height
+                                );
+                                const goto: number =
+                                  (document
+                                    .querySelector("#root")!
+                                    .getBoundingClientRect().height as number) -
+                                  sectionDivideValue * (self.length - i);
+
+                                console.log("goto", goto);
+                                window.scrollTo(0, goto);
+                              }}
+                              className="sub-title"
+                            >
+                              {item.subTitle}
+                            </button>
                           )}
                           {i !== 0 && i < self.length - 1 ? (
                             <span className="icon-area">

@@ -6,12 +6,20 @@ import TempArticle from "./components/TempArticle";
 import Logo from "./components/UI/svg/Logo";
 import GlobalStyle from "./styles/GlobalStyle";
 import ShavingGelProductDetail from "./components/pages/ShavingGelProductDetail";
+import { Switch, Route } from "react-router-dom";
+import ProductDetail from "./components/pages/ProductDetail";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <GlobalStyle />
-      <ShavingGelProductDetail></ShavingGelProductDetail>
+      <Switch>
+        <Route path="/" exact={true} component={ProductDetail}></Route>
+        <Route
+          path="/product-detail"
+          component={ShavingGelProductDetail}
+        ></Route>
+      </Switch>
     </div>
   );
 }

@@ -25,7 +25,6 @@ const ShavingGelProductDetail = () => {
         <QualityFirst></QualityFirst>
         <MoreSafer></MoreSafer>
         <ShavingThreeStep></ShavingThreeStep>
-        {/* <Test></Test> */}
       </ArticleBlock>
     </TemplateBasic>
   );
