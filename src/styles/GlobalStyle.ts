@@ -5,10 +5,61 @@ import { createGlobalStyle, css } from "styled-components";
 // 위에서 받은 `normalize`로 기본 css가 초기화 합니다.
 
 export const fontSize = {
+  //Mo / Headers / TXT_MR26
+  mobile: {
+    headers: {
+      txt_mr26: css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 26px;
+        line-height: 38px;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #000c24;
+      `,
+      txt_mr28: css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 40px;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #000c24;
+      `,
+    },
+    text: {
+      txt_mr12: css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 20px;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #0055b8;
+      `,
+      txt_ml14: css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #838383;
+      `,
+      txt_mr18: css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 26px;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #000c24;
+      `,
+    },
+  },
   pc: {
     text: {
       txt_pl14: css`
-        font-family: SpoqaHanSans;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
@@ -16,7 +67,6 @@ export const fontSize = {
         letter-spacing: -0.04em;
       `,
       txt_pr16: css`
-        font-family: SpoqaHanSans;
         font-style: normal;
         font-weight: normal;
         font-size: 16px;
@@ -24,7 +74,6 @@ export const fontSize = {
         letter-spacing: -0.04em;
       `,
       txt_pr22: css`
-        font-family: SpoqaHanSans;
         font-style: normal;
         font-weight: normal;
         font-size: 22px;
@@ -34,7 +83,6 @@ export const fontSize = {
     },
     header: {
       txt_pr38: css`
-        font-family: SpoqaHanSans;
         font-style: normal;
         font-weight: normal;
         font-size: 38px;
@@ -46,13 +94,13 @@ export const fontSize = {
 };
 const GlobalStyle = createGlobalStyle`
 
-
   html,
   body {
     height:100%;
   }
 
   * {
+    font-family: 'Spoqa Han Sans';
     box-sizing: border-box;
     margin:0;
     padding:0;

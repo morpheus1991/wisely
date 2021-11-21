@@ -15,7 +15,7 @@ interface TemplateBasicProps {
 const TemplateBasicBlock = styled.div`
   .templateArticle {
     margin-top: 60px;
-    height: 100vh;
+    /* height: 100vh; */
   }
 `;
 

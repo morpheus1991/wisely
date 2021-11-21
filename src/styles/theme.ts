@@ -3,14 +3,14 @@ const color = {
   black: "black",
 };
 const size = {
-  desktop: "768px",
+  desktop: "768",
 };
 
 const theme = {
   color,
   media: {
-    mobile: `(max-width: ${size.desktop})`,
-    desktop: `(min-width: ${size.desktop})`,
+    mobile: `(max-width: ${size.desktop}px)`,
+    desktop: `(min-width: ${Number(size.desktop) + 1}px)`,
   },
 };
 

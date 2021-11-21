@@ -15,13 +15,12 @@ import theme from "../../../styles/theme";
 
 /* desktop */
 const DefaultHeaderBlock = styled.div`
-  position: absolute;
-  top: 0;
   width: 100%;
 `;
 const InnerContainer = styled.div`
-  width: 1140px;
+  /* width: 1140px; */
   margin: 0 auto;
+  padding: 0 18px;
 
   @media ${(props) => props.theme.media.desktop} {
     display: flex;

@@ -1,140 +1,301 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { fontSize } from "../../../styles/GlobalStyle";
-
+import theme from "../../../styles/theme";
+import _ from "lodash";
+import SingleLeftAngleQuotation from "../../UI/svg/SingleLeftAngleQuotation";
 const Block = styled.section`
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-
-  .slideArea {
+  @media ${theme.media.desktop} {
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    .slideArea {
+      width: 100%;
 
-    .slide-list {
-      position: sticky;
-      top: 0;
-
-      > .item {
-        position: absolute;
+      .slide-list {
+        position: sticky;
         top: 0;
-        width: 100%;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.5s;
-        &.on {
-          display: flex;
-          opacity: 1;
-          visibility: visible;
+
+        > .item {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.3s;
+          height: 100vh;
           .text-area-nav {
+            .sub-title {
+              padding: 8px 18px;
+              border-radius: 20px;
+            }
             &.currentActive1 {
-              span:nth-child(1) {
-                background: red;
-                animation: nav-action;
+              span:nth-child(2) {
+                .sub-title {
+                  background: #0055b8;
+                  color: #fff;
+                  animation: nav-action 2s;
+                }
               }
             }
             &.currentActive2 {
-              span:nth-child(2) {
-                background: red;
-                animation: nav-action;
+              span:nth-child(3) {
+                .sub-title {
+                  background: #0055b8;
+                  color: #fff;
+                  animation: nav-action;
+                }
               }
             }
             &.currentActive3 {
-              span:nth-child(3) {
-                background: red;
-                animation: nav-action;
+              span:nth-child(4) {
+                .sub-title {
+                  background: #0055b8;
+                  color: #fff;
+                  animation: nav-action;
+                }
               }
             }
           }
-        }
-        @animation nav-action {
-          0% {
-            background: red;
+          &.on {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
           }
-          100% {
-            background: blue;
-          }
-        }
-        > .item-inner {
-          display: flex;
-          width: 100%;
-          height: 100%;
-          .image-area {
-            background: red;
-            width: 50%;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
+          /* TODO : 에니메이션 */
+          @animation nav-action {
+            0% {
+              background: red;
+            }
+            100% {
+              background: blue;
             }
           }
-          .text-area {
+          > .item-inner {
             display: flex;
-            align-items: center;
-            width: 50%;
-            .text-area-inner {
-              width: 100%;
-              min-height: 400px;
-              margin: auto 0;
-              text-align: center;
-              .text-area-nav {
-                display: flex;
-                justify-content: center;
+            width: 100%;
+            height: 100%;
+            .image-area {
+              width: 50%;
+              height: 100%;
+              .image-wrapper {
+                height: 100%;
+
+                img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+            }
+            .text-area {
+              display: flex;
+              align-items: center;
+              width: 50%;
+              height: 100%;
+
+              .text-area-inner {
                 width: 100%;
-                > span {
+                min-height: 400px;
+                margin: auto 0;
+                text-align: center;
+                .text-area-nav {
                   display: flex;
                   justify-content: center;
-                  align-items: center;
-                  padding: 8px 18px;
-                  border-radius: 10px;
-                  position: relative;
-                  transition: 1s;
-                  ${fontSize.pc.text.txt_pr16}
-                  & + span {
-                    margin-left: 20px;
-                    &:before {
-                      content: "";
-                      width: 10px;
-                      height: 10px;
-                      margin: 0 10px;
-                      background: red;
-                      position: absolute;
-                      left: -24px;
-                    }
+                  width: 100%;
+                  > span {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    /* padding: 8px 18px; */
+                    border-radius: 10px;
+                    position: relative;
+                    transition: 1s;
+                    ${fontSize.pc.text.txt_pr16}
+                    color:#838383;
+                  }
+                  .icon-area {
+                    margin: 0 20px;
+                    width: 8px;
+                    height: 12px;
+                    display: flex;
+                  }
+                  & + .title {
+                    margin-top: 70px;
                   }
                 }
-                & + .title {
-                  margin-top: 70px;
+                > a {
+                  display: inline-block;
+                  margin-top: 40px;
                 }
-              }
-              > a {
-                display: inline-block;
-                margin-top: 40px;
-              }
-              .title {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                ${fontSize.pc.header.txt_pr38}
-              }
-              .description {
-                margin-top: 29px;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                ${fontSize.pc.text.txt_pl14}
+                .title {
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  ${fontSize.pc.header.txt_pr38}
+                }
+                .description {
+                  margin-top: 29px;
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  ${fontSize.pc.text.txt_pl14}
+                }
               }
             }
           }
         }
       }
     }
-  }
-  .emptyArea {
-    height: 100%;
-    .item {
+    .emptyArea {
       height: 100%;
+      .item {
+        height: 100%;
+      }
+    }
+  }
+  @media ${theme.media.mobile} {
+    margin-top: 120px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    .slideArea {
+      width: 100%;
+      .slide-list {
+        position: sticky;
+        top: 0;
+        &.on {
+          .text-area-nav {
+          }
+        }
+        > .item {
+          width: 100%;
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.5s;
+          position: absolute;
+          top: 0;
+
+          &.on {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+    
+   
+        }               .text-area-nav {
+                      .sub-title {
+                    margin:0 12px !important;
+                  }
+          }
+          > .item-inner {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: flex-start;
+            .image-area {
+              width: 100%;
+              position: relative;
+              order: 1;
+              .image-wrapper {
+                /* padding-bottom: 83.3333%;
+                position: absolute; */
+              }
+              img {
+                width: 100%;
+              }
+            }
+          }
+        .text-area {
+            width: 100%;
+            order: 2;
+            margin-bottom: auto;
+            /* position: absolute;
+            z-index: 100;
+            top: 0;
+            padding-top: 110%; */
+            .text-area-inner {
+              margin-top: 40px;
+              .text-area-nav {
+                display: flex;
+                > span {
+                  display: flex;
+                  align-items: center;
+                }
+                .sub-title {
+                  padding: 8px 5px;
+                  border-radius: 20px;
+                  display: flex;
+                  align-items: center;
+                  margin: 0 20px;
+                }
+                &.currentActive1 {
+                  span:nth-child(2) {
+                    .sub-title {
+                      background: #0055b8;
+                      color: #fff;
+                      animation: nav-action 2s;
+                      margin: 0 12px;
+                    }
+                  }
+                }
+                &.currentActive2 {
+                  span:nth-child(3) {
+                    .sub-title {
+                      background: #0055b8;
+                      color: #fff;
+                      animation: nav-action;
+                    }
+                  }
+                }
+                &.currentActive3 {
+                  span:nth-child(4) {
+                    .sub-title {
+                      background: #0055b8;
+                      color: #fff;
+                      animation: nav-action;
+                    }
+                  }
+                }
+              }
+          
+              .text-area-nav {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                padding-top: 73%;
+                z-index: 100;
+                > span {
+                }
+                & + .title {
+                }
+              }
+              > a {
+              }
+              .title {
+              }
+              .description {
+                margin-top: 28px;
+              }
+            }
+          }
+        .icon-area {
+                display: flex;
+                width: 10px;
+                align-items: center;
+              }
+      }
+    }
+    .emptyArea {
+      height: 100%;
+      .item {
+        height: 100%;
+      }
     }
   }
 `;
@@ -212,10 +373,6 @@ const ShavingthreeStep = () => {
   ]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const targetRef = useRef<HTMLDivElement>(null); //타겟element
-  const imaegeAreaRef = useRef<HTMLImageElement>(null);
-  const innerHeight = window.innerHeight; //브라우저 화면 높이
-
-  const guideLine = window.innerHeight - window.scrollY - innerHeight / 2; //가상의 중앙선 높이
   useEffect(() => {
     const items = targetRef.current?.querySelectorAll(
       ".item"
@@ -229,35 +386,26 @@ const ShavingthreeStep = () => {
         String((targetRect?.height as number) / (stepInfo.length + 1))
       );
       const index = Math.abs(parseInt(String(targetTop / sectionDivideValue)));
+      console.log("index", index);
+
       if (index < stepInfo.length && 0 > targetTop) {
+        //인덱스보다 아이템 갯수가 작을때
+        //화면에 들어오기시작한 순간부터
         console.log("범위 해당됨");
         console.log(items);
-        items.forEach((item) => {
-          item.classList.remove("on");
-          item
-            .querySelector(`.text-area-nav`)
-            ?.setAttribute(
-              "class",
-              `text-area-nav currentActive${currentIndex}`
-            );
+        items.forEach((item, i) => {
+          if (i !== currentIndex) {
+            item.classList.remove("on");
+          }
         });
-        items[index].classList.add("on");
-
+        items[currentIndex].classList.add("on");
+        items[currentIndex]
+          .querySelector(`.text-area-nav`)
+          ?.setAttribute("class", `text-area-nav currentActive${currentIndex}`);
         if (index !== currentIndex) {
           setCurrentIndex(index);
         }
       }
-      console.log(
-        "scrollY",
-        window.scrollY,
-        "targetTop",
-        targetTop,
-        "sectionDivideValue",
-        sectionDivideValue
-      );
-      console.log(sectionDivideValue);
-
-      console.log(index);
     });
   }, [currentIndex]);
   return (
@@ -265,12 +413,23 @@ const ShavingthreeStep = () => {
       <div className="slideArea" ref={targetRef}>
         <ul className="slide-list">
           {stepInfo.map((item, i) => (
-            <li className="item">
+            <li className={i === 0 ? "first item" : "item"}>
               <div className="item-inner">
                 <div className="text-area">
                   <div className="text-area-inner">
                     <nav className="text-area-nav">
-                      {stepInfo.map((item) => item.subTitle)}
+                      {stepInfo.map((item, i, self) => (
+                        <span>
+                          {i == 0 && item.subTitle === null ? null : (
+                            <span className="sub-title">{item.subTitle}</span>
+                          )}
+                          {i !== 0 && i < self.length - 1 ? (
+                            <span className="icon-area">
+                              <SingleLeftAngleQuotation />
+                            </span>
+                          ) : null}
+                        </span>
+                      ))}
                     </nav>
                     {item.title}
                     {item.description}
@@ -278,17 +437,25 @@ const ShavingthreeStep = () => {
                   </div>
                 </div>
                 <div className="image-area">
-                  <img src={`/ShavingThreeStep${i + 1}.png`} alt="" />
+                  <div className="image-wrapper">
+                    <img
+                      src={
+                        window.innerWidth > 768
+                          ? `/ShavingThreeStep${i + 1}.png`
+                          : `/MobileShavingThreeStep${i + 1}.png`
+                      }
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
             </li>
           ))}
         </ul>
       </div>
-
       <div
         className="emptyArea"
-        style={{ height: `${stepInfo.length}00%` }}
+        style={{ height: `${stepInfo.length}00vh` }}
       ></div>
     </Block>
   );
